@@ -23,6 +23,18 @@ public class BoardPostController {
         return boardPostService.getPostById(postId);
     }
 
+    @GetMapping("/search")
+    public List<BoardPost> searchPosts(@RequestParam String keyword) {
+        return boardPostService.searchPosts(keyword);
+    }
+
+    @PostMapping
+    public void insertPost(@RequestBody BoardPost boardPost) {
+        boardPostService.insertPost(boardPost);
+    }
+
+
+
     @PutMapping("/{postId}")
     public void updatePost(@PathVariable int postId, @RequestBody BoardPost boardPost) {
         boardPost.setPostId(postId);
